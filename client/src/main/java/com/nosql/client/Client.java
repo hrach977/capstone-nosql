@@ -37,6 +37,7 @@ public class Client {
             }
 
         });
+        this.readerThread.setName("Reader");
         this.readerThread.start();
     }
 
