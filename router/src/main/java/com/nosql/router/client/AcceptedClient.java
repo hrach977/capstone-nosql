@@ -11,6 +11,7 @@ import java.util.function.Consumer;
 
 /**
 Server-side socket of the real client
+Wraps an already existing socket
  */
 public class AcceptedClient {
 
@@ -22,11 +23,23 @@ public class AcceptedClient {
     };
     private final InputStream inputStream;
     private final OutputStream outputStream;
+    private final Thread readerThread;
 
     public AcceptedClient(Socket socket) throws IOException {
         this.socket = socket;
         this.inputStream = socket.getInputStream();
         this.outputStream = socket.getOutputStream();
+
+        this.readerThread = new Thread(() -> {
+            logger.info("listening for messages from client");
+            while (true) {
+                //todo should get the message from the inputstream
+                messageConsumer.accept("");
+            }
+
+        });
+        this.readerThread.setName("AcceptedClientReader");
+        this.readerThread.start();
     }
 
     public void send(String message) {
