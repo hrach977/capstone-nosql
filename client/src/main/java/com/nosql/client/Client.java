@@ -7,6 +7,7 @@ import org.springframework.shell.standard.ShellComponent;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.Socket;
 
 import java.util.function.Consumer;
@@ -22,11 +23,13 @@ public class Client {
     };
     private final InputStream inputStream;
     private final Thread readerThread;
-    private Socket socket = null;
+    private final Socket socket;
+    private final OutputStream outputStream;
 
     public Client(String host, int port) throws IOException{
         this.socket = new Socket(host, port);
         this.inputStream = socket.getInputStream();
+        this.outputStream = socket.getOutputStream();
         
         this.readerThread = new Thread(() -> {
             logger.info("listening for messages from server");
