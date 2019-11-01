@@ -1,6 +1,8 @@
 package com.nosql.router;
 
 import com.nosql.router.client.AcceptedClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -11,7 +13,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class Router {
-
+    private static final Logger logger = LoggerFactory.getLogger(Router.class);
     private final ServerSocket socket;
     private final ExecutorService executorService = Executors.newFixedThreadPool(10);
     private final List<AcceptedClient> clients = new ArrayList<>();
@@ -21,9 +23,12 @@ public class Router {
     }
 
     public void start() {
+        logger.info("starting accepting clients");
         while (true) {
             try {
+
                 Socket clientsSocket = this.socket.accept();
+                logger.info("accepted a client at: " + clientsSocket.getInetAddress());
                 executorService.execute(() -> {
                     //todo service logic here
                 });

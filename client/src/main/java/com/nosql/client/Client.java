@@ -35,8 +35,12 @@ public class Client {
             logger.info("listening for messages from server");
 
             while (true) {
-//                String messageFromServer = inputStream.read();
-                messageConsumer.accept("");
+                try {
+                    int messageFromServer = inputStream.read();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                // messageConsumer.accept("");
             }
 
         });

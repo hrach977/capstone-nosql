@@ -21,6 +21,6 @@ public class AppConfig {
 
     @Bean
     int port() {
-        return 8080;
+        return 9080;
     }
 }
