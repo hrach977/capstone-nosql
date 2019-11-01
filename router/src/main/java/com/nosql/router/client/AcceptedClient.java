@@ -18,6 +18,7 @@ public class AcceptedClient {
     private final Socket socket;
     private final Consumer<String> messageConsumer = message -> { //todo this one should also be a consumer of protobuf message type
       logger.info(message);
+      //todo actually this should redirect the request to the server(mongod) then retrieve the result back to the client
     };
     private final InputStream inputStream;
     private final OutputStream outputStream;
