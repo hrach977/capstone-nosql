@@ -1,6 +1,8 @@
 package com.nosql.client.config;
 
 import com.nosql.client.Client;
+import messages.proto.Messages;
+import messages.proto.Messages.Test;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -22,5 +24,10 @@ public class AppConfig {
     @Bean
     int port() {
         return 9080;
+    }
+
+    @Bean
+    Test.Builder builder() {
+        return Test.newBuilder();
     }
 }

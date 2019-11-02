@@ -29,9 +29,11 @@ public class Router {
 
                 Socket clientsSocket = this.socket.accept();
                 logger.info("accepted a client at: " + clientsSocket.getInetAddress());
-                executorService.execute(() -> {
-                    //todo service logic here
-                });
+                AcceptedClient client = new AcceptedClient(clientsSocket);
+                clients.add(client);
+//                executorService.execute(() -> {
+//                    //todo service logic here
+//                });
 
             } catch (IOException e) {
                 e.printStackTrace();

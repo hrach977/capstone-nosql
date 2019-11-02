@@ -1,3 +1,9 @@
 syntax = "proto3";
 
+package messages.proto;
+
 option java_outer_classname = "Messages";
+
+message Test {
+    string text = 1;
+}
