@@ -14,6 +14,8 @@ public class MyCommands {
     @Autowired
     Client client;
 
+    private String currentDb; //track the name of the current db to use in requests
+
     @Autowired
     Messages.Test.Builder builder;
 
@@ -28,6 +30,11 @@ public class MyCommands {
         Messages.Test msg = builder.setText(message).build();
         client.send(msg);
         builder.clear();
+    }
+
+    @ShellMethod //switch the current db
+    public void use(String dbName) {
+
     }
 
 //    @ShellMethod("Show dbs")
