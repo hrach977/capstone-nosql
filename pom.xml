@@ -12,6 +12,7 @@
         <module>client</module>
         <module>common</module>
         <module>router</module>
+        <module>replica-set</module>
     </modules>
 
     <packaging>pom</packaging>
