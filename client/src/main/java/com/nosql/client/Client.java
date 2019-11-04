@@ -1,6 +1,6 @@
 package com.nosql.client;
 
-import messages.proto.Messages;
+import messages.proto.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.annotation.Order;
@@ -18,7 +18,7 @@ import java.util.function.Consumer;
 public class Client {
 
     private static final Logger logger = LoggerFactory.getLogger(Client.class);
-    private final Consumer<Messages.Test> messageConsumer = message -> { //todo the type of the consumer should be protobuf type
+    private final Consumer<Test> messageConsumer = message -> { //todo the type of the consumer should be protobuf type
         //convert protobuf message into string then lof
         logger.info(message.toString());
     };
@@ -38,7 +38,7 @@ public class Client {
             while (true) {
                 try {
                    // int messageFromServer = inputStream.read(); //todo should parse via proto util
-                    Messages.Test message = Messages.Test.parseFrom(inputStream);
+                    Test message = Test.parseFrom(inputStream);
                     messageConsumer.accept(message);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -56,7 +56,7 @@ public class Client {
      * @param message
      * @throws IOException
      */
-    public void send(Messages.Test message) throws IOException {
+    public void send(Test message) throws IOException {
 
         logger.info("sending message to server: " + message.toString());
 //        message.writeTo(outputStream);

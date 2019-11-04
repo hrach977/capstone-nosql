@@ -1,6 +1,6 @@
 package com.nosql.client;
 
-import messages.proto.Messages;
+import messages.proto.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
@@ -17,7 +17,7 @@ public class MyCommands {
     private String currentDb; //track the name of the current db to use in requests
 
     @Autowired
-    Messages.Test.Builder builder;
+    Test.Builder builder;
 
     @ShellMethod("Add two integers together.")
     public int add(int a, int b) {
@@ -27,15 +27,15 @@ public class MyCommands {
     @ShellMethod("send test message")
     public void send(String message) throws IOException {
 
-        Messages.Test msg = builder.setText(message).build();
+        Test msg = builder.setText(message).build();
         client.send(msg);
         builder.clear();
     }
 
-    @ShellMethod //switch the current db
-    public void use(String dbName) {
-
-    }
+//    @ShellMethod //switch the current db
+//    public void use(String dbName) {
+//
+//    }
 
 //    @ShellMethod("Show dbs")
 //    public List<String> showDbs() {

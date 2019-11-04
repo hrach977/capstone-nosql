@@ -2,8 +2,14 @@ syntax = "proto3";
 
 package messages.proto;
 
-option java_outer_classname = "Messages";
+option java_multiple_files = true;
+
+//option java_outer_classname = "Messages";
 
 message Test {
     string text = 1;
+}
+
+message Urish {
+    int32 count = 1;
 }
