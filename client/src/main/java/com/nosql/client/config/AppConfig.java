@@ -1,7 +1,9 @@
 package com.nosql.client.config;
 
+import com.google.protobuf.util.JsonFormat;
+import com.google.protobuf.util.JsonFormat.Parser;
+import com.google.protobuf.util.JsonFormat.Printer;
 import com.nosql.client.Client;
-import messages.proto.Messages;
 import messages.proto.Test;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,5 +31,15 @@ public class AppConfig {
     @Bean
     Test.Builder builder() {
         return Test.newBuilder();
+    }
+
+    @Bean
+    Printer printer() {
+        return JsonFormat.printer();
+    }
+
+    @Bean
+    Parser parser() {
+        return JsonFormat.parser();
     }
 }

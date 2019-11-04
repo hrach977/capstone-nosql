@@ -1,5 +1,8 @@
 package com.nosql.client;
 
+import com.google.protobuf.util.JsonFormat;
+import com.google.protobuf.util.JsonFormat.Parser;
+import com.google.protobuf.util.JsonFormat.Printer;
 import messages.proto.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.shell.standard.ShellComponent;
@@ -18,6 +21,12 @@ public class MyCommands {
 
     @Autowired
     Test.Builder builder;
+
+    @Autowired
+    Parser parser;
+
+    @Autowired
+    Printer printer;
 
     @ShellMethod("Add two integers together.")
     public int add(int a, int b) {
