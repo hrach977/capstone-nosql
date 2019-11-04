@@ -17,7 +17,7 @@ public class MyCommands {
     @Autowired
     Client client;
 
-    private String currentDb; //track the name of the current db to use in requests
+    private String currentDb = "test"; //track the name of the current db to use in requests
 
     @Autowired
     Test.Builder builder;
@@ -41,18 +41,30 @@ public class MyCommands {
         builder.clear();
     }
 
-    @ShellMethod(key = "db.find()", value = "get cursor for the collection")
+    @ShellMethod(key = "db.find()", value = "Get cursor for the collection.")
     public void find() {
         System.out.println("find executed");
     }
 
-//    @ShellMethod //switch the current db
-//    public void use(String dbName) {
-//
-//    }
+    @ShellMethod(key = "show collections", value = "Get the list of collections.")
+    public void showCollections() {
+        System.out.println("list of collections");
+    }
 
-//    @ShellMethod("Show dbs")
-//    public List<String> showDbs() {
-//
-//    }
+    @ShellMethod(key = "show dbs", value = "Get the list of dbs")
+    public void showDbs() {
+        System.out.println("list of dbs");
+    }
+
+    @ShellMethod("Show the name of the current database")
+    public String db() {
+        return currentDb;
+    }
+
+    @ShellMethod("Switch database")
+    public String use(String dbName) {
+        currentDb = dbName;
+        return currentDb;
+    }
+
 }
