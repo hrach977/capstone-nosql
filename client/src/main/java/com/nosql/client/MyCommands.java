@@ -41,6 +41,11 @@ public class MyCommands {
         builder.clear();
     }
 
+    @ShellMethod(key = "db.find()", value = "get cursor for the collection")
+    public void find() {
+        System.out.println("find executed");
+    }
+
 //    @ShellMethod //switch the current db
 //    public void use(String dbName) {
 //
