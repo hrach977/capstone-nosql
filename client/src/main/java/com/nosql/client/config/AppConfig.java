@@ -33,13 +33,13 @@ public class AppConfig {
         return Test.newBuilder();
     }
 
-    @Bean
-    Printer printer() {
+    //@Bean
+    JsonFormat.Printer printer() {
         return JsonFormat.printer();
     }
 
-    @Bean
-    Parser parser() {
+    //@Bean
+    JsonFormat.Parser parser() {
         return JsonFormat.parser();
     }
 }

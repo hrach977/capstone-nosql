@@ -22,11 +22,11 @@ public class MyCommands {
     @Autowired
     Test.Builder builder;
 
-    @Autowired
-    Parser parser;
-
-    @Autowired
-    Printer printer;
+//    @Autowired(required = false)
+//    Parser parser;
+//
+//    @Autowired(required = false)
+//    Printer printer;
 
     @ShellMethod("Add two integers together.")
     public int add(int a, int b) {
