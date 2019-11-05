@@ -1,9 +1,11 @@
 package com.nosql.replica.set;
 
+import java.util.List;
+
 public class ReplicaSet {
 
     private Shard primary;
-    private Shard replica;
+    private List<Shard> replica;
 
 
 }
