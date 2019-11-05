@@ -5,5 +5,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Database {
 
+    private String name;
     private List<Collection> collections = new CopyOnWriteArrayList<>();
 }
