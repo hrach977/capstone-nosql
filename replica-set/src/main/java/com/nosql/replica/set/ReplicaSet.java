@@ -4,8 +4,8 @@ import java.util.List;
 
 public class ReplicaSet {
 
-    private Shard primary;
-    private List<Shard> replica;
-
+//    private Shard primary;
+//    private List<Shard> shards;
+    List<Shard> shards;
 
 }
