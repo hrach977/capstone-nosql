@@ -10,9 +10,9 @@ message Test {
     string text = 1;
 }
 
-message Urish {
-    int32 count = 1;
-}
+//message Urish {
+//    int32 count = 1;
+//}
 
 message Command {
     oneof shell_command {
@@ -32,13 +32,15 @@ message Drop {
 }
 
 message Find {
-
+    int32 skip = 1;
+    int32 limit = 2;
 }
 
 message FindOne {
     string db_name = 1;
     string collection_name = 2;
-    map<string, string> filters = 3;
+//    map<string, string> filters = 3;
+    map<string, Type> filters = 3;
     map<string, int32> projection = 4;
 }
 
@@ -46,4 +48,23 @@ message CreateIndex {
     string db_name = 1;
     string collection_name = 2;
     //index type, and fields
+}
+
+message Type {
+    oneof field_type {
+//        Type type = 1; //todo this might be unnecessary with the presence of Schema type
+        string word = 2;
+        int64 num = 3;
+        bool ok = 4;
+        Schema schema = 5;
+    }
+}
+
+message MapFieldEntry {
+    string key = 1;
+    Type value = 2;
+}
+
+message Schema {
+    repeated MapFieldEntry map_field = 1;
 }
