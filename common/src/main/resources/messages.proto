@@ -58,6 +58,8 @@ message Type {
         bool ok = 4;
         Schema schema = 5;
     }
+
+
 }
 
 message MapFieldEntry {
@@ -68,3 +70,10 @@ message MapFieldEntry {
 message Schema {
     repeated MapFieldEntry map_field = 1;
 }
+
+//
+//message Tuple {
+//    string key;
+//    Obj value;
+//}
+

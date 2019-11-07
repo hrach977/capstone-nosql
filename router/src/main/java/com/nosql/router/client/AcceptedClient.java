@@ -23,6 +23,8 @@ public class AcceptedClient {
       logger.info("received message from client: " + message.toString());
       //todo actually this should redirect the request to the server(mongod) then retrieve the result back to the client
     };
+
+    //todo some component as a final field to handle all the messaging trafic (might be partially used in the consumer)
     private final InputStream inputStream;
     private final OutputStream outputStream;
     private final Thread readerThread;
